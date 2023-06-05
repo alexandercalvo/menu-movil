@@ -1,0 +1,131 @@
+/*========================para el menu hamburguesa =================0*/
+:root{
+    --color-primary: #FFF; 
+    --color-secondary: lightcoral; 
+    --color-three: #000; 
+    --color-four:#6096B4;
+    --color-five:#B2A4FF;
+    --paddin-menu: .5em 1em;
+}
+.hamburger{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.hamburger > :nth-child(n){
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color:var(--color-secondary);
+    margin-top: 6px;
+    transform-origin: 0px 100%;
+}
+
+
+.hamburger > :nth-child(1).hamburger-line--active{
+    transform: rotate(45deg) translate(-2px, 1px);
+}
+.hamburger > :nth-child(2).hamburger-line--active{
+    opacity: 0;
+   margin-left: -30px;
+ 
+}
+
+.hamburger > :nth-child(3).hamburger-line--active{
+    transform: rotate(-45deg) translate(-4px, 2px);
+}
+
+
+
+/*========================fin del codigo para el menu hamburguesa===================*/
+
+.main-menu :nth-child(n){
+    list-style: none;
+    text-decoration: none;
+}
+
+.main-menu :nth-child(2){
+    color:rgb(168, 218, 53);
+    
+}
+.main-menu__list > :nth-child(n){
+    color: brown;
+    border: 1px solid #000;
+}
+
+
+
+  .main-menu__sublist {
+    display: none;
+    flex-direction: column;
+    padding: var(--paddin-menu);
+   
+  }
+
+  .main-menu__item--active{
+    border-bottom: 1px solid #000;
+    outline: 1px solid #000;
+  }
+
+  .main-menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .main-menu__item{
+    display: block;
+    padding: var(--paddin-menu);
+    background-color:var(--color-primary);
+    color:var(--color-three);
+    
+  }
+  .anchorback{
+
+  }
+
+  .main-menu__item:hover{
+    background-color: var(--color-five);
+  }
+  .main-menu__list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+  }
+  .main-menu__anchor{
+    width: 100%;
+    color: var(--color-three);
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-menu__hidden-title{
+    display: none;
+  }
+
+  .main-menu__list--inactive{
+    display: none;
+    padding: 0;
+  }
+  .main-menu__item--active{
+    background-color: rgb(58, 173, 194);
+    padding:10px 16px;
+  }
+
+  @media screen and (min-width:600px){
+    .hamburger{
+        display: none;
+      }
+    .main-menu__list{
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    
+        
+      }
+     
+  }
