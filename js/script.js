@@ -44,8 +44,11 @@ const resetItems = (element, back) =>{
 const resetLi = (element) => {
     const $buttonBack = document.querySelector('.back');
     $buttonBack ? $buttonBack.remove() : "";
-    const $subMenus = document.querySelectorAll('.main-menu__item');
-          resetItems( $subMenus);
+
+    const  $parentElement = element.closest('.main-menu__item').parentNode,
+    $childs = Array.from($parentElement.children).filter((child)=>child != element);
+  
+    resetItems($childs);
         
 }
 
@@ -119,7 +122,7 @@ const validateChildUl = (element) => {
 //console.log('first',element.closest(".main-menu__item").classList)
 //viewElement(element);
 
-resetLi();
+resetLi(element);
         element.classList.remove('main-menu__list--inactive');
         
         element.parentNode.parentNode.classList.remove('main-menu__list--inactive');
@@ -151,6 +154,15 @@ const returnBack = (element) => {
         resetItems($submenu, true);
     
 }
+
+//funcion con nuevo enfoque para hir bajando de nivel
+const nextItem = (element) =>{
+   const  $parentElement = element.parentNode,
+   $childs = Array.from($parentElement.children).filter((child)=>child != element);
+   resetItem($childs, false);
+   
+}
+
 //funcion para escuchar todos los clicks de documento
 const listenerClicks = () => {
     document.addEventListener('click', (event) => {
@@ -166,6 +178,7 @@ const listenerClicks = () => {
                 break;
 
             case event.target.matches('.main-menu__item') || event.target.matches('.main-menu__anchor') || event.target.matches('.fa-caret-right') || event.target.matches('span'):
+                //nextItem(event.target.closest('.main-menu__item'));
                 elementClicked(event.target);
                 break;
 
